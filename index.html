@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiabetMarket - Alimentação Segura para Diabéticos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #3B82F6;
+            --primary-purple: #9333EA;
+            --light-blue: #EFF6FF;
+            --light-purple: #F3E8FF;
+            --dark-text: #1F2937;
+            --light-text: #6B7280;
+            --white: #FFFFFF;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-icon {
+            color: var(--primary-purple);
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-blue), var(--light-purple));
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--light-text);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Story Section */
+        .story {
+            background-color: var(--white);
+        }
+
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .story-text {
+            flex: 1;
+        }
+
+        .story-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+
+        .story-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .story-image img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Problem Section */
+        .problem {
+            background-color: var(--light-blue);
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .problem-card i {
+            font-size: 40px;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Solution Section */
+        .solution-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .solution-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-card i {
+            font-size: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* Categories Section */
+        .categories {
+            background-color: var(--light-purple);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-image {
+            height: 180px;
+            background-color: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-image i {
+            font-size: 60px;
+            color: var(--primary-blue);
+        }
+
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 180px;
+            background-color: var(--light-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image i {
+            font-size: 60px;
+            color: var(--primary-purple);
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #D1D5DB;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #9CA3AF;
+        }
+
+        /* Login Page */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            padding: 20px;
+        }
+
+        .login-box {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .login-header p {
+            color: var(--light-text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #D1D5DB;
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #E5E7EB;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: var(--dark-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 10px 15px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 0 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon, .user-avatar {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary-purple);
+            color: var(--white);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .welcome-banner h2 {
+            margin-bottom: 10px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content, .story-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .story-text {
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .dashboard {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat logo-icon"></i>
+                        <h1>DiabetMarket</h1>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#story">História</a></li>
+                            <li><a href="#solution">Solução</a></li>
+                            <li><a href="#categories">Categorias</a></li>
+                            <li><a href="#products">Produtos</a></li>
+                        </ul>
+                    </nav>
+                    <div class="auth-buttons">
+                        <a href="#login" class="btn btn-secondary">Entrar</a>
+                        <a href="#register" class="btn btn-primary">Cadastrar</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Alimentação Segura para Diabéticos</h1>
+                        <p>Produtos verificados, restaurantes especializados e comidas congeladas com informações nutricionais completas.</p>
+                        <div class="hero-buttons">
+                            <a href="#products" class="btn btn-primary">Explorar Produtos</a>
+                            <a href="#restaurants" class="btn btn-secondary">Ver Restaurantes</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=DiabetMarket+App" alt="Interface do DiabetMarket">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="story" id="story">
+            <div class="container">
+                <div class="story-content">
+                    <div class="story-text">
+                        <h2>Nossa História e Propósito</h2>
+                        <p>Criado por Eli, um diabético que sempre teve dificuldade em encontrar produtos acessíveis e confiáveis.</p>
+                        <p>Após anos enfrentando preços abusivos e burocracias, ele decidiu criar uma plataforma que conecta consumidores, restaurantes e mercados especializados em alimentos sem açúcar.</p>
+                        <p>O DiabetMarket nasceu de uma dor real — e se tornou o primeiro marketplace do Brasil totalmente dedicado à alimentação para diabéticos.</p>
+                    </div>
+                    <div class="story-image">
+                        <img src="https://placehold.co/500x400/9333EA/FFFFFF?text=História+DiabetMarket" alt="Fundador do DiabetMarket">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="problem">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Problemas que Identificamos</h2>
+                    <p>As principais dificuldades enfrentadas por diabéticos na busca por alimentação adequada</p>
+                </div>
+                <div class="problem-cards">
+                    <div class="problem-card">
+                        <i class="fas fa-search"></i>
+                        <h3>Dificuldade em Encontrar Produtos</h3>
+                        <p>Falta de opções específicas para diabéticos em mercados e restaurantes convencionais.</p>
+                    </div>
+                    <div class="problem-card">
+                        <i class="fas fa-tags"></i>
+                        <h3>Preços Abusivos</h3>
+                        <p>Produtos especializados com valores muito acima do mercado comum.</p>
+                    </div>
+                    <div class="problem-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Poucas Opções de Restaurantes</h3>
+                        <p>Cardápios sem opções adequadas para quem precisa evitar açúcar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution" id="solution">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nossa Solução</h2>
+                    <p>O DiabetMarket oferece uma abordagem completa para alimentação segura de diabéticos</p>
+                </div>
+                <div class="solution-cards">
+                    <div class="solution-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Pioneiro no Segmento</h3>
+                        <p>Primeiro marketplace especializado no público diabético no Brasil.</p>
+                    </div>
+                    <div class="solution-card">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h3>Sem Taxas Abusivas</h3>
+                        <p>Modelo justo tanto para compradores quanto para vendedores.</p>
+                    </div>
+                    <div class="solution-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Produtos Verificados</h3>
+                        <p>Segurança nutricional garantida por especialistas.</p>
+                    </div>
+                    <div class="solution-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Plataforma Inclusiva</h3>
+                        <p>Conecta consumidores, estabelecimentos e profissionais da saúde.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories" id="categories">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Categorias Principais</h2>
+                    <p>Encontre tudo o que precisa em um só lugar</p>
+                </div>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-image">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Alimentos Frescos</h3>
+                            <p>Frutas, vegetais e produtos naturais selecionados</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Congelados</h3>
+                            <p>Refeições prontas e picolés zero açúcar</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Restaurantes</h3>
+                            <p>Delivery especializado em comida sem açúcar</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-image">
+                            <i class="fas fa-capsules"></i>
+                        </div>
+                        <div class="category-content">
+                            <h3>Suplementos</h3>
+                            <p>Vitaminas e complementos nutricionais</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products" id="products">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Produtos em Destaque</h2>
+                    <p>Os mais vendidos e bem avaliados pela nossa comunidade</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-bread-slice"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Pão Integral Zero Açúcar</h3>
+                            <p class="product-price">R$ 12,90</p>
+                            <div class="verified-badge">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Verificado por Nutricionista</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-wine-bottle"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Suco Natural Zero</h3>
+                            <p class="product-price">R$ 8,50</p>
+                            <div class="verified-badge">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Verificado por Nutricionista</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-cookie"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Cookies Funcionais</h3>
+                            <p class="product-price">R$ 15,90</p>
+                            <div class="verified-badge">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Verificado por Nutricionista</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-ice-cream"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Sorvete Zero Lactose</h3>
+                            <p class="product-price">R$ 24,90</p>
+                            <div class="verified-badge">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Verificado por Nutricionista</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>DiabetMarket</h3>
+                        <p>Sua plataforma de confiança para alimentação segura de diabéticos.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Links Rápidos</h3>
+                        <ul>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#story">Nossa História</a></li>
+                            <li><a href="#solution">Solução</a></li>
+                            <li><a href="#categories">Categorias</a></li>
+                            <li><a href="#products">Produtos</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Para Vendedores</h3>
+                        <ul>
+                            <li><a href="#">Seja um Parceiro</a></li>
+                            <li><a href="#">Dashboard Vendedor</a></li>
+                            <li><a href="#">Diretrizes de Produtos</a></li>
+                            <li><a href="#">Suporte ao Vendedor</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contato</h3>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> contato@diabetmarket.com</li>
+                            <li><i class="fas fa-phone"></i> (11) 9999-9999</li>
+                            <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>Cuidar de quem precisa é nossa prioridade. © 2025 DiabetMarket.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Login Page (hidden by default) -->
+    <div id="login-page" style="display: none;">
+        <div class="login-container">
+            <div class="login-box">
+                <div class="login-header">
+                    <h1>DiabetMarket</h1>
+                    <p>Bem-vindo ao DiabetMarket 💙<br>Sua alimentação segura começa aqui.</p>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" class="form-control" placeholder="Sua senha">
+                    </div>
+                    <button type="button" class="btn btn-primary login-btn" onclick="login()">Entrar</button>
+                </form>
+                <div class="login-footer">
+                    <p>Não tem uma conta? <a href="#" onclick="showRegister()">Criar Conta</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard (hidden by default) -->
+    <div id="dashboard" style="display: none;">
+        <div class="dashboard">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat logo-icon"></i>
+                        <h1>DiabetMarket</h1>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#"><i class="fas fa-utensils"></i> Restaurantes</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-basket"></i> Produtos</a></li>
+                    <li><a href="#"><i class="fas fa-capsules"></i> Suplementos</a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i> Favoritos</a></li>
+                    <li><a href="#"><i class="fas fa-receipt"></i> Meus Pedidos</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i> Meu Perfil</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+                    <li><a href="#" onclick="showLandingPage()"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="dashboard-header">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar produtos, restaurantes...">
+                    </div>
+                    <div class="user-actions">
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">3</span>
+                        </div>
+                        <div class="user-avatar">
+                            <i class="fas fa-user-circle" style="font-size: 32px;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="welcome-banner">
+                    <h2>Olá, Cloves!</h2>
+                    <p>Encontre produtos e restaurantes favoritos sem açúcar.</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Categorias Principais</h3>
+                        <div class="categories-grid" style="grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="category-card" style="padding: 15px;">
+                                <div class="category-image" style="height: 80px;">
+                                    <i class="fas fa-apple-alt"></i>
+                                </div>
+                                <div class="category-content" style="padding: 10px 0 0;">
+                                    <h4 style="font-size: 14px;">Frescos</h4>
+                                </div>
+                            </div>
+                            <div class="category-card" style="padding: 15px;">
+                                <div class="category-image" style="height: 80px;">
+                                    <i class="fas fa-snowflake"></i>
+                                </div>
+                                <div class="category-content" style="padding: 10px 0 0;">
+                                    <h4 style="font-size: 14px;">Congelados</h4>
+                                </div>
+                            </div>
+                            <div class="category-card" style="padding: 15px;">
+                                <div class="category-image" style="height: 80px;">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div class="category-content" style="padding: 10px 0 0;">
+                                    <h4 style="font-size: 14px;">Restaurantes</h4>
+                                </div>
+                            </div>
+                            <div class="category-card" style="padding: 15px;">
+                                <div class="category-image" style="height: 80px;">
+                                    <i class="fas fa-capsules"></i>
+                                </div>
+                                <div class="category-content" style="padding: 10px 0 0;">
+                                    <h4 style="font-size: 14px;">Suplementos</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Recomendações Personalizadas</h3>
+                        <div class="products-grid" style="grid-template-columns: 1fr; gap: 15px;">
+                            <div class="product-card" style="display: flex; padding: 15px;">
+                                <div class="product-image" style="height: 60px; width: 60px; min-width: 60px;">
+                                    <i class="fas fa-bread-slice"></i>
+                                </div>
+                                <div class="product-content" style="padding: 0 0 0 15px;">
+                                    <h4 class="product-title" style="font-size: 14px;">Pão Integral Zero Açúcar</h4>
+                                    <p class="product-price" style="font-size: 14px;">R$ 12,90</p>
+                                </div>
+                            </div>
+                            <div class="product-card" style="display: flex; padding: 15px;">
+                                <div class="product-image" style="height: 60px; width: 60px; min-width: 60px;">
+                                    <i class="fas fa-cookie"></i>
+                                </div>
+                                <div class="product-content" style="padding: 0 0 0 15px;">
+                                    <h4 class="product-title" style="font-size: 14px;">Cookies Funcionais</h4>
+                                    <p class="product-price" style="font-size: 14px;">R$ 15,90</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Destaques da Semana</h3>
+                    <div class="products-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-wine-bottle"></i>
+                            </div>
+                            <div class="product-content">
+                                <h4 class="product-title">Suco Natural Zero</h4>
+                                <p class="product-price">R$ 8,50</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-ice-cream"></i>
+                            </div>
+                            <div class="product-content">
+                                <h4 class="product-title">Sorvete Zero Lactose</h4>
+                                <p class="product-price">R$ 24,90</p>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <i class="fas fa-cheese"></i>
+                            </div>
+                            <div class="product-content">
+                                <h4 class="product-title">Queijo Zero Lactose</h4>
+                                <p class="product-price">R$ 18,90</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation between pages
+        function showLoginPage() {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('login-page').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+        }
+
+        function showLandingPage() {
+            document.getElementById('landing-page').style.display = 'block';
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'none';
+        }
+
+        function showDashboard() {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+        }
+
+        function showRegister() {
+            alert('Funcionalidade de cadastro será implementada em breve!');
+        }
+
+        function login() {
+            // Simulação de login
+            showDashboard();
+        }
+
+        // Add event listeners to login buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginButtons = document.querySelectorAll('a[href="#login"]');
+            loginButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showLoginPage();
+                });
+            });
+        });
+    </script>
+</body>
+                              </html>
