@@ -31,6 +31,7 @@
             color: var(--dark-text);
             background-color: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -113,20 +114,21 @@
             font-size: 24px;
         }
 
-        nav ul {
+        /* Menu Desktop */
+        .desktop-nav ul {
             display: flex;
             list-style: none;
             gap: 30px;
         }
 
-        nav a {
+        .desktop-nav a {
             text-decoration: none;
             color: var(--dark-text);
             font-weight: 500;
             transition: var(--transition);
         }
 
-        nav a:hover {
+        .desktop-nav a:hover {
             color: var(--primary-blue);
         }
 
@@ -135,6 +137,87 @@
             gap: 15px;
         }
 
+        /* Menu Mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-text);
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 100;
+            padding: 80px 30px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 12px 0;
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--light-blue);
+            padding-left: 10px;
+        }
+
+        .mobile-auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .mobile-auth-buttons .btn {
+            text-align: center;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         /* Hero Section */
         .hero {
@@ -465,221 +548,6 @@
             color: #9CA3AF;
         }
 
-        /* Login Page */
-        .login-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-            padding: 20px;
-        }
-
-        .login-box {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            width: 100%;
-            max-width: 450px;
-            padding: 40px;
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .login-header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .login-header p {
-            color: var(--light-text);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #D1D5DB;
-            border-radius: var(--border-radius);
-            font-family: 'Inter', sans-serif;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-        }
-
-        .login-footer {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .login-footer a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Dashboard */
-        .dashboard {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            padding: 20px 0;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-        }
-
-        .sidebar-header {
-            padding: 0 20px 20px;
-            border-bottom: 1px solid #E5E7EB;
-            margin-bottom: 20px;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-        }
-
-        .sidebar-menu li {
-            margin-bottom: 5px;
-        }
-
-        .sidebar-menu a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            color: var(--dark-text);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background-color: var(--light-blue);
-            color: var(--primary-blue);
-        }
-
-        .main-content {
-            flex: 1;
-            margin-left: 250px;
-            padding: 20px;
-        }
-
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #E5E7EB;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            padding: 10px 15px;
-            box-shadow: var(--shadow);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .search-bar input {
-            border: none;
-            outline: none;
-            width: 100%;
-            padding: 0 10px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .user-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .cart-icon, .user-avatar {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--primary-purple);
-            color: var(--white);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        .welcome-banner {
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-            color: var(--white);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            margin-bottom: 30px;
-        }
-
-        .welcome-banner h2 {
-            margin-bottom: 10px;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .dashboard-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 20px;
-        }
-
-        .dashboard-card h3 {
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #E5E7EB;
-        }
-
         /* Responsive */
         @media (max-width: 992px) {
             .hero-content, .story-content {
@@ -693,31 +561,15 @@
             .hero-buttons {
                 justify-content: center;
             }
-            
-            .dashboard {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
+            .desktop-nav, .auth-buttons {
+                display: none;
             }
             
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+            .mobile-menu-btn {
+                display: block;
             }
             
             .hero-text h1 {
@@ -733,601 +585,354 @@
             }
         }
     </style>
-    <style>
-/* ========= MENU MOBILE LANDING ========= */
-@media (max-width: 768px) {
-    nav {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100%;
-        background-color: var(--white);
-        box-shadow: -4px 0 12px rgba(0,0,0,0.1);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 60px 30px;
-        transition: var(--transition);
-        z-index: 9999;
-    }
-
-    nav.active {
-        right: 0;
-        display: flex;
-    }
-
-    .burger-menu {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 25px;
-        height: 18px;
-        cursor: pointer;
-    }
-
-    .burger-menu span {
-        height: 3px;
-        background: var(--primary-blue);
-        border-radius: 3px;
-        transition: var(--transition);
-    }
-
-    .auth-buttons {
-        display: none;
-    }
-}
-
-/* ========= MENU MOBILE DASHBOARD (BOTTOM NAV) ========= */
-.dashboard-bottom-nav {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
-
-    .dashboard-bottom-nav {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: var(--white);
-        box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
-        justify-content: space-around;
-        padding: 10px 0;
-        z-index: 1000;
-    }
-
-    .dashboard-bottom-nav a {
-        color: var(--dark-text);
-        font-size: 20px;
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: var(--transition);
-    }
-
-    .dashboard-bottom-nav a.active,
-    .dashboard-bottom-nav a:hover {
-        color: var(--primary-blue);
-    }
-
-    .main-content {
-        margin-bottom: 60px;
-    }
-}
-    </style>
 </head>
 <body>
-    <!-- Landing Page -->
-    <div id="landing-page">
-        <header>
-            
-            <div class="burger-menu" id="burgerMenu">
-  <span></span>
-  <span></span>
-  <span></span>
-            </div>
-            
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">
-                        <i class="fas fa-heartbeat logo-icon"></i>
-                        <h1>DiabetMarket</h1>
-                    </div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home">Início</a></li>
-                            <li><a href="#story">História</a></li>
-                            <li><a href="#solution">Solução</a></li>
-                            <li><a href="#categories">Categorias</a></li>
-                            <li><a href="#products">Produtos</a></li>
-                        </ul>
-                    </nav>
-                    <div class="auth-buttons">
-                        <a href="#login" class="btn btn-secondary">Entrar</a>
-                        <a href="#register" class="btn btn-primary">Cadastrar</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <section class="hero" id="home">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Alimentação Segura para Diabéticos</h1>
-                        <p>Produtos verificados, restaurantes especializados e comidas congeladas com informações nutricionais completas.</p>
-                        <div class="hero-buttons">
-                            <a href="#products" class="btn btn-primary">Explorar Produtos</a>
-                            <a href="#restaurants" class="btn btn-secondary">Ver Restaurantes</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=DiabetMarket+App" alt="Interface do DiabetMarket">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="story" id="story">
-            <div class="container">
-                <div class="story-content">
-                    <div class="story-text">
-                        <h2>Nossa História e Propósito</h2>
-                        <p>Criado por Eli, um diabético que sempre teve dificuldade em encontrar produtos acessíveis e confiáveis.</p>
-                        <p>Após anos enfrentando preços abusivos e burocracias, ele decidiu criar uma plataforma que conecta consumidores, restaurantes e mercados especializados em alimentos sem açúcar.</p>
-                        <p>O DiabetMarket nasceu de uma dor real — e se tornou o primeiro marketplace do Brasil totalmente dedicado à alimentação para diabéticos.</p>
-                    </div>
-                    <div class="story-image">
-                        <img src="https://placehold.co/500x400/9333EA/FFFFFF?text=História+DiabetMarket" alt="Fundador do DiabetMarket">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="problem">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Problemas que Identificamos</h2>
-                    <p>As principais dificuldades enfrentadas por diabéticos na busca por alimentação adequada</p>
-                </div>
-                <div class="problem-cards">
-                    <div class="problem-card">
-                        <i class="fas fa-search"></i>
-                        <h3>Dificuldade em Encontrar Produtos</h3>
-                        <p>Falta de opções específicas para diabéticos em mercados e restaurantes convencionais.</p>
-                    </div>
-                    <div class="problem-card">
-                        <i class="fas fa-tags"></i>
-                        <h3>Preços Abusivos</h3>
-                        <p>Produtos especializados com valores muito acima do mercado comum.</p>
-                    </div>
-                    <div class="problem-card">
-                        <i class="fas fa-utensils"></i>
-                        <h3>Poucas Opções de Restaurantes</h3>
-                        <p>Cardápios sem opções adequadas para quem precisa evitar açúcar.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="solution" id="solution">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Nossa Solução</h2>
-                    <p>O DiabetMarket oferece uma abordagem completa para alimentação segura de diabéticos</p>
-                </div>
-                <div class="solution-cards">
-                    <div class="solution-card">
-                        <i class="fas fa-lightbulb"></i>
-                        <h3>Pioneiro no Segmento</h3>
-                        <p>Primeiro marketplace especializado no público diabético no Brasil.</p>
-                    </div>
-                    <div class="solution-card">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        <h3>Sem Taxas Abusivas</h3>
-                        <p>Modelo justo tanto para compradores quanto para vendedores.</p>
-                    </div>
-                    <div class="solution-card">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Produtos Verificados</h3>
-                        <p>Segurança nutricional garantida por especialistas.</p>
-                    </div>
-                    <div class="solution-card">
-                        <i class="fas fa-users"></i>
-                        <h3>Plataforma Inclusiva</h3>
-                        <p>Conecta consumidores, estabelecimentos e profissionais da saúde.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="categories" id="categories">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Categorias Principais</h2>
-                    <p>Encontre tudo o que precisa em um só lugar</p>
-                </div>
-                <div class="categories-grid">
-                    <div class="category-card">
-                        <div class="category-image">
-                            <i class="fas fa-apple-alt"></i>
-                        </div>
-                        <div class="category-content">
-                            <h3>Alimentos Frescos</h3>
-                            <p>Frutas, vegetais e produtos naturais selecionados</p>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-image">
-                            <i class="fas fa-snowflake"></i>
-                        </div>
-                        <div class="category-content">
-                            <h3>Congelados</h3>
-                            <p>Refeições prontas e picolés zero açúcar</p>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-image">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <div class="category-content">
-                            <h3>Restaurantes</h3>
-                            <p>Delivery especializado em comida sem açúcar</p>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-image">
-                            <i class="fas fa-capsules"></i>
-                        </div>
-                        <div class="category-content">
-                            <h3>Suplementos</h3>
-                            <p>Vitaminas e complementos nutricionais</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="products" id="products">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Produtos em Destaque</h2>
-                    <p>Os mais vendidos e bem avaliados pela nossa comunidade</p>
-                </div>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-bread-slice"></i>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Pão Integral Zero Açúcar</h3>
-                            <p class="product-price">R$ 12,90</p>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Verificado por Nutricionista</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-wine-bottle"></i>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Suco Natural Zero</h3>
-                            <p class="product-price">R$ 8,50</p>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Verificado por Nutricionista</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-cookie"></i>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Cookies Funcionais</h3>
-                            <p class="product-price">R$ 15,90</p>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Verificado por Nutricionista</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <i class="fas fa-ice-cream"></i>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="product-title">Sorvete Zero Lactose</h3>
-                            <p class="product-price">R$ 24,90</p>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Verificado por Nutricionista</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-column">
-                        <h3>DiabetMarket</h3>
-                        <p>Sua plataforma de confiança para alimentação segura de diabéticos.</p>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Links Rápidos</h3>
-                        <ul>
-                            <li><a href="#home">Início</a></li>
-                            <li><a href="#story">Nossa História</a></li>
-                            <li><a href="#solution">Solução</a></li>
-                            <li><a href="#categories">Categorias</a></li>
-                            <li><a href="#products">Produtos</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Para Vendedores</h3>
-                        <ul>
-                            <li><a href="#">Seja um Parceiro</a></li>
-                            <li><a href="#">Dashboard Vendedor</a></li>
-                            <li><a href="#">Diretrizes de Produtos</a></li>
-                            <li><a href="#">Suporte ao Vendedor</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Contato</h3>
-                        <ul>
-                            <li><i class="fas fa-envelope"></i> contato@diabetmarket.com</li>
-                            <li><i class="fas fa-phone"></i> (11) 9999-9999</li>
-                            <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>Cuidar de quem precisa é nossa prioridade. © 2025 DiabetMarket.</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Login Page (hidden by default) -->
-    <div id="login-page" style="display: none;">
-        <div class="login-container">
-            <div class="login-box">
-                <div class="login-header">
+    <!-- Header com Menu Hamburguer -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-heartbeat logo-icon"></i>
                     <h1>DiabetMarket</h1>
-                    <p>Bem-vindo ao DiabetMarket 💙<br>Sua alimentação segura começa aqui.</p>
                 </div>
-                <form>
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" class="form-control" placeholder="seu@email.com">
+
+                <!-- Menu Desktop -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#story">História</a></li>
+                        <li><a href="#solution">Solução</a></li>
+                        <li><a href="#categories">Categorias</a></li>
+                        <li><a href="#products">Produtos</a></li>
+                    </ul>
+                </nav>
+
+                <div class="auth-buttons">
+                    <a href="#login" class="btn btn-secondary">Entrar</a>
+                    <a href="#register" class="btn btn-primary">Cadastrar</a>
+                </div>
+
+                <!-- Botão Menu Mobile -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Mobile -->
+    <div class="overlay" id="overlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#story">História</a></li>
+            <li><a href="#solution">Solução</a></li>
+            <li><a href="#categories">Categorias</a></li>
+            <li><a href="#products">Produtos</a></li>
+        </ul>
+        <div class="mobile-auth-buttons">
+            <a href="#login" class="btn btn-secondary">Entrar</a>
+            <a href="#register" class="btn btn-primary">Cadastrar</a>
+        </div>
+    </nav>
+
+    <!-- Conteúdo da Landing Page -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Alimentação Segura para Diabéticos</h1>
+                    <p>Produtos verificados, restaurantes especializados e comidas congeladas com informações nutricionais completas.</p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn btn-primary">Explorar Produtos</a>
+                        <a href="#restaurants" class="btn btn-secondary">Ver Restaurantes</a>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" id="password" class="form-control" placeholder="Sua senha">
-                    </div>
-                    <button type="button" class="btn btn-primary login-btn" onclick="login()">Entrar</button>
-                </form>
-                <div class="login-footer">
-                    <p>Não tem uma conta? <a href="#" onclick="showRegister()">Criar Conta</a></p>
+                </div>
+                <div class="hero-image">
+                    <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=DiabetMarket+App" alt="Interface do DiabetMarket">
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Dashboard (hidden by default) -->
-    <div id="dashboard" style="display: none;">
-        <div class="dashboard">
-            <div class="sidebar">
-                <div class="sidebar-header">
-                    <div class="logo">
-                        <i class="fas fa-heartbeat logo-icon"></i>
-                        <h1>DiabetMarket</h1>
-                    </div>
+    <section class="story" id="story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Nossa História e Propósito</h2>
+                    <p>Criado por Eli, um diabético que sempre teve dificuldade em encontrar produtos acessíveis e confiáveis.</p>
+                    <p>Após anos enfrentando preços abusivos e burocracias, ele decidiu criar uma plataforma que conecta consumidores, restaurantes e mercados especializados em alimentos sem açúcar.</p>
+                    <p>O DiabetMarket nasceu de uma dor real — e se tornou o primeiro marketplace do Brasil totalmente dedicado à alimentação para diabéticos.</p>
                 </div>
-                <ul class="sidebar-menu">
-                    <li><a href="#" class="active"><i class="fas fa-home"></i> Início</a></li>
-                    <li><a href="#"><i class="fas fa-utensils"></i> Restaurantes</a></li>
-                    <li><a href="#"><i class="fas fa-shopping-basket"></i> Produtos</a></li>
-                    <li><a href="#"><i class="fas fa-capsules"></i> Suplementos</a></li>
-                    <li><a href="#"><i class="fas fa-heart"></i> Favoritos</a></li>
-                    <li><a href="#"><i class="fas fa-receipt"></i> Meus Pedidos</a></li>
-                    <li><a href="#"><i class="fas fa-user"></i> Meu Perfil</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
-                    <li><a href="#" onclick="showLandingPage()"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
-                </ul>
+                <div class="story-image">
+                    <img src="https://placehold.co/500x400/9333EA/FFFFFF?text=História+DiabetMarket" alt="Fundador do DiabetMarket">
+                </div>
             </div>
-            <div class="main-content">
-                <div class="dashboard-header">
-                    <div class="search-bar">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Buscar produtos, restaurantes...">
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <div class="section-title">
+                <h2>Problemas que Identificamos</h2>
+                <p>As principais dificuldades enfrentadas por diabéticos na busca por alimentação adequada</p>
+            </div>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Dificuldade em Encontrar Produtos</h3>
+                    <p>Falta de opções específicas para diabéticos em mercados e restaurantes convencionais.</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Preços Abusivos</h3>
+                    <p>Produtos especializados com valores muito acima do mercado comum.</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Poucas Opções de Restaurantes</h3>
+                    <p>Cardápios sem opções adequadas para quem precisa evitar açúcar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution" id="solution">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Solução</h2>
+                <p>O DiabetMarket oferece uma abordagem completa para alimentação segura de diabéticos</p>
+            </div>
+            <div class="solution-cards">
+                <div class="solution-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Pioneiro no Segmento</h3>
+                    <p>Primeiro marketplace especializado no público diabético no Brasil.</p>
+                </div>
+                <div class="solution-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Sem Taxas Abusivas</h3>
+                    <p>Modelo justo tanto para compradores quanto para vendedores.</p>
+                </div>
+                <div class="solution-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Produtos Verificados</h3>
+                    <p>Segurança nutricional garantida por especialistas.</p>
+                </div>
+                <div class="solution-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Plataforma Inclusiva</h3>
+                    <p>Conecta consumidores, estabelecimentos e profissionais da saúde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Categorias Principais</h2>
+                <p>Encontre tudo o que precisa em um só lugar</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-apple-alt"></i>
                     </div>
-                    <div class="user-actions">
-                        <div class="cart-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="cart-count">3</span>
-                        </div>
-                        <div class="user-avatar">
-                            <i class="fas fa-user-circle" style="font-size: 32px;"></i>
+                    <div class="category-content">
+                        <h3>Alimentos Frescos</h3>
+                        <p>Frutas, vegetais e produtos naturais selecionados</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Congelados</h3>
+                        <p>Refeições prontas e picolés zero açúcar</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Restaurantes</h3>
+                        <p>Delivery especializado em comida sem açúcar</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-capsules"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Suplementos</h3>
+                        <p>Vitaminas e complementos nutricionais</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Produtos em Destaque</h2>
+                <p>Os mais vendidos e bem avaliados pela nossa comunidade</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Pão Integral Zero Açúcar</h3>
+                        <p class="product-price">R$ 12,90</p>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verificado por Nutricionista</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="welcome-banner">
-                    <h2>Olá, Cloves!</h2>
-                    <p>Encontre produtos e restaurantes favoritos sem açúcar.</p>
-                </div>
-
-                <div class="dashboard-grid">
-                    <div class="dashboard-card">
-                        <h3>Categorias Principais</h3>
-                        <div class="categories-grid" style="grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div class="category-card" style="padding: 15px;">
-                                <div class="category-image" style="height: 80px;">
-                                    <i class="fas fa-apple-alt"></i>
-                                </div>
-                                <div class="category-content" style="padding: 10px 0 0;">
-                                    <h4 style="font-size: 14px;">Frescos</h4>
-                                </div>
-                            </div>
-                            <div class="category-card" style="padding: 15px;">
-                                <div class="category-image" style="height: 80px;">
-                                    <i class="fas fa-snowflake"></i>
-                                </div>
-                                <div class="category-content" style="padding: 10px 0 0;">
-                                    <h4 style="font-size: 14px;">Congelados</h4>
-                                </div>
-                            </div>
-                            <div class="category-card" style="padding: 15px;">
-                                <div class="category-image" style="height: 80px;">
-                                    <i class="fas fa-utensils"></i>
-                                </div>
-                                <div class="category-content" style="padding: 10px 0 0;">
-                                    <h4 style="font-size: 14px;">Restaurantes</h4>
-                                </div>
-                            </div>
-                            <div class="category-card" style="padding: 15px;">
-                                <div class="category-image" style="height: 80px;">
-                                    <i class="fas fa-capsules"></i>
-                                </div>
-                                <div class="category-content" style="padding: 10px 0 0;">
-                                    <h4 style="font-size: 14px;">Suplementos</h4>
-                                </div>
-                            </div>
-                        </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-wine-bottle"></i>
                     </div>
-
-                    <div class="dashboard-card">
-                        <h3>Recomendações Personalizadas</h3>
-                        <div class="products-grid" style="grid-template-columns: 1fr; gap: 15px;">
-                            <div class="product-card" style="display: flex; padding: 15px;">
-                                <div class="product-image" style="height: 60px; width: 60px; min-width: 60px;">
-                                    <i class="fas fa-bread-slice"></i>
-                                </div>
-                                <div class="product-content" style="padding: 0 0 0 15px;">
-                                    <h4 class="product-title" style="font-size: 14px;">Pão Integral Zero Açúcar</h4>
-                                    <p class="product-price" style="font-size: 14px;">R$ 12,90</p>
-                                </div>
-                            </div>
-                            <div class="product-card" style="display: flex; padding: 15px;">
-                                <div class="product-image" style="height: 60px; width: 60px; min-width: 60px;">
-                                    <i class="fas fa-cookie"></i>
-                                </div>
-                                <div class="product-content" style="padding: 0 0 0 15px;">
-                                    <h4 class="product-title" style="font-size: 14px;">Cookies Funcionais</h4>
-                                    <p class="product-price" style="font-size: 14px;">R$ 15,90</p>
-                                </div>
-                            </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Suco Natural Zero</h3>
+                        <p class="product-price">R$ 8,50</p>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verificado por Nutricionista</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="dashboard-card">
-                    <h3>Destaques da Semana</h3>
-                    <div class="products-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <i class="fas fa-wine-bottle"></i>
-                            </div>
-                            <div class="product-content">
-                                <h4 class="product-title">Suco Natural Zero</h4>
-                                <p class="product-price">R$ 8,50</p>
-                            </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-cookie"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cookies Funcionais</h3>
+                        <p class="product-price">R$ 15,90</p>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verificado por Nutricionista</span>
                         </div>
-                        <div class="product-card">
-                            <div class="product-image">
-                                <i class="fas fa-ice-cream"></i>
-                            </div>
-                            <div class="product-content">
-                                <h4 class="product-title">Sorvete Zero Lactose</h4>
-                                <p class="product-price">R$ 24,90</p>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-image">
-                                <i class="fas fa-cheese"></i>
-                            </div>
-                            <div class="product-content">
-                                <h4 class="product-title">Queijo Zero Lactose</h4>
-                                <p class="product-price">R$ 18,90</p>
-                            </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Sorvete Zero Lactose</h3>
+                        <p class="product-price">R$ 24,90</p>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verificado por Nutricionista</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<div class="dashboard-bottom-nav">
-    <a href="#home" class="active"><i class="fas fa-home"></i></a>
-    <a href="#products"><i class="fas fa-shopping-basket"></i></a>
-    <a href="#orders"><i class="fas fa-receipt"></i></a>
-    <a href="#profile"><i class="fas fa-user"></i></a>
-</div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DiabetMarket</h3>
+                    <p>Sua plataforma de confiança para alimentação segura de diabéticos.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#story">Nossa História</a></li>
+                        <li><a href="#solution">Solução</a></li>
+                        <li><a href="#categories">Categorias</a></li>
+                        <li><a href="#products">Produtos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Para Vendedores</h3>
+                    <ul>
+                        <li><a href="#">Seja um Parceiro</a></li>
+                        <li><a href="#">Dashboard Vendedor</a></li>
+                        <li><a href="#">Diretrizes de Produtos</a></li>
+                        <li><a href="#">Suporte ao Vendedor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@diabetmarket.com</li>
+                        <li><i class="fas fa-phone"></i> (11) 9999-9999</li>
+                        <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Cuidar de quem precisa é nossa prioridade. © 2025 DiabetMarket.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Navigation between pages
-        function showLoginPage() {
-            document.getElementById('landing-page').style.display = 'none';
-            document.getElementById('login-page').style.display = 'block';
-            document.getElementById('dashboard').style.display = 'none';
+        // Menu Hamburguer
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const body = document.body;
+
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+            
+            // Alternar ícone do botão
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         }
 
-        function showLandingPage() {
-            document.getElementById('landing-page').style.display = 'block';
-            document.getElementById('login-page').style.display = 'none';
-            document.getElementById('dashboard').style.display = 'none';
-        }
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
 
-        function showDashboard() {
-            document.getElementById('landing-page').style.display = 'none';
-            document.getElementById('login-page').style.display = 'none';
-            document.getElementById('dashboard').style.display = 'block';
-        }
+        // Fechar menu ao clicar em um link
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
 
-        function showRegister() {
-            alert('Funcionalidade de cadastro será implementada em breve!');
-        }
-
-        function login() {
-            // Simulação de login
-            showDashboard();
-        }
-
-        // Add event listeners to login buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const loginButtons = document.querySelectorAll('a[href="#login"]');
-            loginButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showLoginPage();
-                });
+        // Smooth scroll para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
-
-    <script>
-const burger = document.getElementById('burgerMenu');
-const nav = document.querySelector('header nav');
-
-burger.addEventListener('click', () => {
-    nav.classList.toggle('active');
-});
-    </script>
 </body>
-                              </html>
+</html>
